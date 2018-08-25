@@ -1,358 +1,80 @@
 
-<!DOCTYPE html><script>var __pbpa = true;</script><script>var translated_warning_string = 'Warning: Never enter your Tumblr password unless \u201chttps://www.tumblr.com/login\u201d\x0ais the address in your web browser.\x0a\x0aYou should also see a green \u201cTumblr, Inc.\u201d identification in the address bar.\x0a\x0aSpammers and other bad guys use fake forms to steal passwords.\x0a\x0aTumblr will never ask you to log in from a user\u2019s blog.\x0a\x0aAre you absolutely sure you want to continue?';</script><script type="text/javascript" language="javascript" src="http://assets.tumblr.com/assets/scripts/pre_tumblelog.js?_v=7e0654d636b56bfe6a0970b99e23e0f7"></script><!DOCTYPE html>
-<script>var __pbpa = true;</script><script>var translated_warning_string = 'Warning: Never enter your Tumblr password unless \u201chttps://www.tumblr.com/login\u201d\x0ais the address in your web browser.\x0a\x0aYou should also see a green \u201cTumblr, Inc.\u201d identification in the address bar.\x0a\x0aSpammers and other bad guys use fake forms to steal passwords.\x0a\x0aTumblr will never ask you to log in from a user\u2019s blog.\x0ahttp://static.tumblr.com/lak9qgn/TXzoxf7dl/b1a4_sorter_code.js\x0aAre you absolutely sure you want to continue?';</script><script type="text/javascript" language="javascript" src="http://assets.tumblr.com/assets/scripts/pre_tumblelog.js?_v=d5b1303192ef61b63bd92b73fac711ca"></script>
+<!DOCTYPE html>
+<script>var __pbpa = true;</script>
+
+  <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="Cache-Control" content="no-cache">
   
-  <noscript></noscript><script type="text/javascript" src="http://static.tumblr.com/8blsvta/AAUmlpa5y/mod_k-factory.js"></script>  
-  <script type="text/javascript" src="https://static.tumblr.com/z3asruv/47bp2va2o/fnc_main_v3_new.js"></script>
-  <script type="text/javascript" src="https://static.tumblr.com/z3asruv/7DLpazui4/b1a4_sorter_code_new_img_solo.js"></script>
+  <noscript></noscript><script type="text/javascript" src="js/mod_k-factory.js"></script>  
+  <script type="text/javascript" src="js/fnc_main.js"></script>
+  <script type="text/javascript" src="js/b1a4_sorter.js"></script>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# blog: http://ogp.me/ns/blog#">
 
 <title>B1A4 Song Sorter</title>
-  <style type="text/css">
+  
+<link rel="stylesheet" href="css/styles.css">
 
-#mainTable {
-   font-size: 14px;
-   font-family: 'Arial', sans-serif;
-   text-align: center;
-   vertical-align: middle;
-   width: 410px;
-   margin-left: auto;
-   margin-right: auto;
-   border-collapse: separate;
-   border-spacing: 10px 5px;
-   
-}
+</head>
+<body onLoad="startup()">
+  <div style="text-align:center">
+  <a href="index.html"><img src="images/header.jpg" width=482px style="margin: 10px auto; position: relative; right: 5px;"></a>
+    <table id="mainTable">
+        <thead>
+            <tr>
+                <td colspan="9" class="tb_header">Battle No. <span id="lblCount">-</span><br>
+                <span id="lblProgress">0</span>% sorted.<br>
+                <div style="text-align:center"><span id="GaGprog"></span></div>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="fldLeft" onClick="fnc_Sort(-1);" rowspan="2">Let's Fly!</td>
+                <td style="border: 0px; width: 7px;" rowspan="2"></td>
+                <td id="fldMiddleT" onClick="fnc_Sort(0);"><p>Instructions<br> Below</p></td>
+                <td style="border: 0px; width: 7px;" rowspan="2"></td>
+                <td id="fldRight" onClick="fnc_Sort(1);" rowspan="2">Let's Fly!</td>
+            </tr>
+            <tr>
+                <td id="fldMiddleB" onClick="fnc_Undo();"> Click to Start!</p></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+            <td colspan="3"><div style="text-align:center">
+            <input id="optImage" type="checkbox" checked>
+            <span class="tb_header"> Display images while sorting. 
+            </span></div></td>
+            </tr>
+        </tfoot>
 
-.tb_header {
-    padding-bottom: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-#fldLeft    {
-    height: 180px;
-	text-align: center; 
-	min-width: 120px;
-	border: 1px solid #000;
-	cursor:pointer;
-    padding:10px;
-	font-family: Arial, Helvetica, sans-serif;
-}
-#fldRight   {
-    height: 180px;
-	text-align: center;
-    padding:10px;
-	min-width: 120px;
-	border: 1px solid #000;
-	cursor:pointer;
-	font-family: Arial, Helvetica, sans-serif;
-}
-#fldMiddleT {
-	text-align: center;
-	min-width: 150px;
-	height: 90px;
-	border: 1px solid #000;
-	cursor:pointer;
-	font-family: Arial, Helvetica, sans-serif;
-}
-#fldMiddleB {
-	text-align: center;
-	width: 150px;
-	height: 50px;
-	padding:0px;
-	border: 1px solid #000;
-	cursor:pointer;
-	font-family: Arial, Helvetica, sans-serif;
-}
-
-.cbox {
-	cursor:pointer;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 9px;
-}
-
-#resTable {
-	width:200px;
-	font-size:12px;
-    height:180px;
-	line-height:100%;
-	margin-left:auto;
-	margin-right:auto;
-	border:1px solid #000;
-	border-collapse:collapse;
-	text-align: center;
-	font-family: Arial, Helvetica, sans-serif;
-}
-
-.resTableH {
-	color:#ffffff;
-	background-color:#000000;
-	text-align:center;
-	font-family: Arial, Helvetica, sans-serif;
-}
-.resTableL {
-	color:#000000;
-	border:1px solid #000000;
-	text-align:right;
-	padding-right:5px;
-	font-family: Arial, Helvetica, sans-serif;
-}
-.resTableR {
-	color:#000000;
-	border:1px solid #000000;
-	padding-left:5px;
-	font-family: Arial, Helvetica, sans-serif;
-}
-
-a       {
-	text-decoration:none;
-    font-size:15px;
-	font-family: Arial, Helvetica, sans-serif;
-}
-a:hover {
-	color:#99ccff;
-    font-size:15px;
-	font-family: Arial, Helvetica, sans-serif;
-}
-<!--
-.style4 {
-    font-family: Arial, Helvetica, sans-serif;
-	color: #000000;
-	font-weight: normal;
-    font-size:15px;
-}
-a:link {
-	color: #990000;
-    font-size:15px;
-	text-decoration: none;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size:15px;
-}
-a {
-	font-family: Arial, Helvetica, sans-serif;
-	;font-size:15px;
-}
-a:visited {
-	text-decoration: none;
-	color: #6600FF;font-size:15px;
-	font-size: 11px;
-	font-family: Arial, Helvetica, sans-serif;
-}
-a:hover {
-	text-decoration: none;
-	color: #FF6600;
-	font-size:15px;
-	font-family: Arial, Helvetica, sans-serif;
-}
-a:active {
-	text-decoration: none;
-	font-size:15px;
-	font-family: Arial, Helvetica, sans-serif;
-}
-body {
-background-color:#ffffff;}
--->
-  </style>
-    
-
-<script type="text/javascript" src="http://assets.tumblr.com/assets/scripts/tumblelog.js?_v=dd8c4ed07e8aca559e5b8ae3e21a2de6"></script><meta http-equiv="x-dns-prefetch-control" content="off"/>
-
-<style>figure{margin:0}.tmblr-iframe{position:absolute}.tmblr-iframe.hide{display:none}.tmblr-iframe--amp-cta-button{visibility:hidden;position:fixed;bottom:10px;left:50%;transform:translateX(-50%);z-index:100}.tmblr-iframe--amp-cta-button.tmblr-iframe--loaded{visibility:visible;animation:iframe-app-cta-transition .2s ease-out}</style><link rel="alternate" href="android-app://com.tumblr/tumblr/x-callback-url/blog?blogName=b1a4songsorter" /><link rel="alternate" href="ios-app://305343404/tumblr/x-callback-url/blog?blogName=b1a4songsorter" /><script src="http://assets.tumblr.com/assets/scripts/tumblelog_post_message_queue.js?_v=a8938c0e77cf8b1347c2e8acd1ee607c"></script><link rel="stylesheet" type="text/css" href="http://assets.tumblr.com/fonts/gibson/stylesheet.css?v=3"><!-- TWITTER TAGS --><meta charset="utf-8"><meta name="twitter:site" content="tumblr" /><meta name="twitter:card" content="app" /><meta name="twitter:description" content="b1a4songsorter" /><meta name="twitter:title" content="b1a4songsorter" /><meta name="twitter:app:name:iphone" content="Tumblr" /><meta name="twitter:app:name:ipad" content="Tumblr" /><meta name="twitter:app:name:googleplay" content="Tumblr" /><meta name="twitter:app:id:iphone" content="305343404" /><meta name="twitter:app:id:ipad" content="305343404" /><meta name="twitter:app:id:googleplay" content="com.tumblr" /><meta name="twitter:app:url:iphone" content="tumblr://x-callback-url/blog?blogName=b1a4songsorter&amp;referrer=twitter-cards" /><meta name="twitter:app:url:ipad" content="tumblr://x-callback-url/blog?blogName=b1a4songsorter&amp;referrer=twitter-cards" /><meta name="twitter:app:url:googleplay" content="tumblr://x-callback-url/blog?blogName=b1a4songsorter&amp;referrer=twitter-cards" /><link rel="canonical" href="http://b1a4songsorter.tumblr.com" /></head><body onLoad="startup()">
-  <div align="center">
-  <img src="https://kimchislap.com/wp-content/uploads/2017/09/Last-Batch-of-B1A4-Rollin-Concept-Teasers-Blue-Version-Is-Out.jpg" width=482px style="margin: 10px auto; position: relative; right: 5px;">
-   <table id="mainTable">
-    <thead>
-     <tr>
-      <td colspan="9" class="tb_header">Battle No. <span id="lblCount">-</span><br>
-<span id="lblProgress">0</span>% sorted.<br>
-       <div align="center"><span id="GaGprog"></span></div>
-      </td>
-     </tr>
-    </thead>
-    <tbody>
-     <tr>
-      <td id="fldLeft" onClick="fnc_Sort(-1);" rowspan="2">Let's Fly!</td>
-	  <td style="border: 0px; width: 7px;" rowspan="2"></td>
-      <td id="fldMiddleT" onClick="fnc_Sort(0);"><p>Instructions<br> Below</p>
-        </td>
-	  <td style="border: 0px; width: 7px;" rowspan="2"></td>
-      <td id="fldRight" onClick="fnc_Sort(1);" rowspan="2">Let's Fly!</td>
-     </tr>
-     <tr>
-      <td id="fldMiddleB" onClick="fnc_Undo();"> Click to Start!</p></td>
-     </tr>
-    </tbody>
-<tfoot>
-     <tr>
-      <td colspan="3"><div align="center">
-         <input id="optImage" type="checkbox" checked>
-        <span class="tb_header"> Display images while sorting. 
-          </input> 
-        </span></div></td>
-     </tr>
-    </tfoot>
-
-   </table>
+    </table>
   </div>
   <br>
-   <table id="optTable" align="center" width="450"></table>
+   <table id="optTable" style="margin: auto;" width="450"></table>
   <br>
-  <div id="ranTable" width="640px" align="center" class="tb" style="display:none;">
-<div>	
-</div>
+  <div id="ranTable" width="640px" style="margin: auto;" class="tb" style="display:none;">
+
 </div>
   <div class="style4" id="resultField" style="text-align:center;">
-    <p class="instructions" style="text-align:center; font-size:15px;">
-    <b>INSTRUCTIONS</b><br> Select the song you like most among the options shown, or select "tie" if you like them both. You can choose to sort KOR albums, JP albums, or both. <br><br>
-<b>UPDATES</b> <br>Sep 14, 2017: sorter created with korean and japanese discography through <i>4</i><br>
-Sep 25, 2017: added <i>Rollin'</i> <br>
-Jan 20, 2018: added images, added a separate category for OSTs, added some JP songs I forgot </br>
-Feb 6, 2018: added <i>Do You Remember</i></br>
-Feb 8, 2018: added <i>Stay As You Are</i></br>
-April 9, 2018: added <i>Aeru Made</i></br>
-June 27, 2018: added <i>5</i></br>
-<br> <b>CREDITS</b> <br>
-Original script by <a href="http://kouga.net">K-Factory</a>; original Touhou sorter by <a href="http://mainyan.sakura.ne.jp/">E-Phantasm</a><br>
-Created by Shiny <a href="http://twitter.com/natsuhl">@NATSUHl</a>/<a href="http://jinthoven.tumblr.com">jinthoven</a>
+        <p class="instructions" style="text-align:center; font-size:15px;">
+        <b>INSTRUCTIONS</b><br> Select the song you like most among the options shown, or select "tie" if you like them both. You can choose to sort KOR albums, JP albums, or both. <br><br>
+        <b>UPDATES</b> <br>Sep 14, 2017: sorter created with korean and japanese discography through <i>4</i><br>
+        Sep 25, 2017: added <i>Rollin'</i> <br>
+        Jan 20, 2018: added images, added a separate category for OSTs, added some JP songs I forgot <br>
+        Feb 6, 2018: added <i>Do You Remember</i><br>
+        Feb 8, 2018: added <i>Stay As You Are</i><br>
+        April 9, 2018: added <i>Aerumade</i><br>
+        June 27, 2018: added <i>5</i><br>
+        <br> <b>CREDITS</b> <br>
+        Original script by <a href="http://kouga.net">K-Factory</a>; original Touhou sorter by <a href="http://mainyan.sakura.ne.jp/">E-Phantasm</a><br>
 </div>
     
   </div>
- 
-<!-- BEGIN TUMBLR CODE -->
-        
-    
-        <iframe id="tumblr_controls" width="1" height="1" frameborder="0" scrolling="no" style="position:absolute; z-index:2147483647; top:0; right:0; border:0; background-color:transparent; overflow:hidden; " src="http://assets.tumblr.com/assets/html/iframe/o.html?_v=c8716054b61cbe135a4967adcda57eb8#src=http%3A%2F%2Fdrsorter.tumblr.com%2F&amp;lang=en_US&amp;name=drsorter&amp;avatar=http%3A%2F%2F25.media.tumblr.com%2Favatar_b0d5d3f0afa3_64.png&amp;title=Favorite+Character+Sorter&amp;url=http%3A%2F%2Fdrsorter.tumblr.com%2F&amp;page_slide=slide"></iframe>    <div id="teaser_iframe_container" style="display:none;"><iframe scrolling="no" frameborder="0" src="http://www.tumblr.com/assets/html/iframe/teaser.html#src=http%3A%2F%2Fdrsorter.tumblr.com%2F&amp;lang=en_US&amp;name=drsorter&amp;avatar=http%3A%2F%2F25.media.tumblr.com%2Favatar_b0d5d3f0afa3_64.png&amp;title=Favorite+Character+Sorter&amp;url=http%3A%2F%2Fdrsorter.tumblr.com%2F&amp;page_slide=slide" id="teaser_iframe" width="1" height="1"></iframe></div>    
-    <!--[if IE]><script type="text/javascript">document.getElementById('tumblr_controls').allowTransparency=true;</script><![endif]-->
-    
-        
-<iframe src="http://assets.tumblr.com/analytics.html?76c6d36d27e09b4d933b81f9b8546aea" scrolling="no" width="1" height="1" frameborder="0" style="background-color:transparent; overflow:hidden; position:absolute; top:0; left:0 z-index:9999;" id="ga_target"></iframe>
 
-    <script>
-        var COMSCORE = true;
-        window.setTimeout(function() {
-            var analytics_frame = document.getElementById('ga_target');
-            analytics_frame.contentWindow.postMessage('enable_comscore;' + window.location, analytics_frame.src.split('/analytics.html')[0]);
-        }, 1000);
-    </script>
-
-
-
-    <script type="text/javascript">
-      var _qevents = _qevents || [];
-
-      (function() {
-       var elem = document.createElement('script');
-
-       elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
-       elem.async = true;
-       elem.type = "text/javascript";
-       var scpt = document.getElementsByTagName('script')[0];
-       scpt.parentNode.insertBefore(elem, scpt);
-      })();
-    </script>
-    <script type="text/javascript">
-        _qevents.push( { qacct: 'p-19UtqE8ngoZbM' } );
-    </script>
-    <noscript>
-        <div style="display: none;"><img src="//pixel.quantserve.com/pixel/'p-19UtqE8ngoZbM'.gif" height="1" width="1" alt="Quantcast"/></div>
-    </noscript>
-
-
-    <script type="text/javascript">!function(s){s.src='http://www.tumblr.com/impixu?T=1375149833&J=eyJ0eXBlIjoidXJsIiwidXJsIjoiaHR0cDpcL1wvZHJzb3J0ZXIudHVtYmxyLmNvbVwvIiwicmVxdHlwZSI6MH0=&U=LFDAODOBGC&K=0df1cf8719e7a456d76d0ce9068ced3844d83bf4b492cb64e03691d49d838728&R='.replace(/&R=[^&$]*/,'').concat('&R='+escape(document.referrer)).slice(0,2000).replace(/%.?.?$/,'');}(new Image());</script><noscript><img style="position:absolute;z-index:-3334;top:0px;left:0px;visibility:hidden;" src="http://www.tumblr.com/impixu?T=1375149833&J=eyJ0eXBlIjoidXJsIiwidXJsIjoiaHR0cDpcL1wvZHJzb3J0ZXIudHVtYmxyLmNvbVwvIiwicmVxdHlwZSI6MCwibm9zY3JpcHQiOjF9&U=LFDAODOBGC&K=35f293942566f90f96e3b584c566f64befcf715b13a18bb7cbfdf52302695f80&R="></noscript><script type="text/javascript">!function(s){s.src='http://www.tumblr.com/impixu?T=1375149833&J=eyJ0eXBlIjoicG9zdCIsInVybCI6Imh0dHA6XC9cL2Ryc29ydGVyLnR1bWJsci5jb21cLyIsInJlcXR5cGUiOjAsInBvc3RzIjpbeyJwb3N0aWQiOiI1MTA5OTUyOTM5NiIsImJsb2dpZCI6Ijg0MzY3NDM0Iiwic291cmNlIjozM30seyJwb3N0aWQiOiI1MT
-A5NzY3NDQzMCIsImJsb2dpZCI6Ijg0MzY3NDM0Iiwic291cmNlIjozM30seyJwb3N0aWQiOiI1MDU5MDQ1NjUxNCIsImJsb2dpZCI6Ijg0MzY3NDM0Iiwic291cmNlIjozM30seyJwb3N0aWQiOiI1MDU4MTIxMzYyMiIsImJsb2dpZCI6Ijg0MzY3NDM0Iiwic291cmNlIjozM30seyJwb3N0aWQiOiI0OTQ4NzY4NDcwMSIsImJsb2dpZCI6Ijg0MzY3NDM0Iiwic291cmNlIjozM30seyJwb3N0aWQiOiI0ODg0OTgyNzk3MCIsImJsb2dpZCI6Ijg0MzY3NDM0Iiwic291cmNlIjozM31dfQ==&U=LPGKAFJMDL&K=e222af9c69240ede5467acdf83537db4212fe5c62deed23eb4a69ca2d4ff8555&R='.replace(/&R=[^&$]*/,'').concat('&R='+escape(document.referrer)).slice(0,2000).replace(/%.?.?$/,'');}(new Image());</script><noscript><img style="position:absolute;z-index:-3334;top:0px;left:0px;visibility:hidden;" src="http://www.tumblr.com/impixu?T=1375149833&J=eyJ0eXBlIjoicG9zdCIsInVybCI6Imh0dHA6XC9cL2Ryc29ydGVyLnR1bWJsci5jb21cLyIsInJlcXR5cGUiOjAsInBvc3RzIjpbeyJwb3N0aWQiOiI1MTA5OTUyOTM5NiIsImJsb2dpZCI6Ijg0MzY3NDM0Iiwic291cmNlIjozM30seyJwb3N0aWQiOiI1MTA5NzY3NDQzMCIsImJsb2dpZCI6Ijg0MzY3NDM0Iiwic291cmNlIjozM30seyJwb3N0aWQiOiI1MDU5MDQ1NjUxNCIsImJsb2dpZCI6Ijg0MzY3NDM0Ii
-wic291cmNlIjozM30seyJwb3N0aWQiOiI1MDU4MTIxMzYyMiIsImJsb2dpZCI6Ijg0MzY3NDM0Iiwic291cmNlIjozM30seyJwb3N0aWQiOiI0OTQ4NzY4NDcwMSIsImJsb2dpZCI6Ijg0MzY3NDM0Iiwic291cmNlIjozM30seyJwb3N0aWQiOiI0ODg0OTgyNzk3MCIsImJsb2dpZCI6Ijg0MzY3NDM0Iiwic291cmNlIjozM31dLCJub3NjcmlwdCI6MX0=&U=LPGKAFJMDL&K=ee192fbc5bb6414edeb784fc9dfa818d408cbe7e989d4678aac795b9466f0c63&R="></noscript><!-- END TUMBLR CODE -->
-
-<iframe scrolling="no" width="1" height="1" frameborder="0" style="background-color:transparent; overflow:hidden; position:absolute; top:0; left:0; z-index:9999;" id="ga_target"></iframe><script type="text/javascript">
-    (function(){
-        var analytics_frame = document.getElementById('ga_target');
-        var analytics_iframe_loaded;
-        var user_logged_in;
-        var blog_is_nsfw = 'No';
-        var addthis_enabled = false;
-
-        var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
-        var eventer = window[eventMethod];
-        var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
-        eventer(messageEvent,function(e) {
-            var message = (e.data && e.data.split) ? e.data.split(';') : '';
-            switch (message[0]) {
-                case 'analytics_iframe_loaded':
-                    analytics_iframe_loaded = true;
-                    postCSMessage();
-                    postGAMessage();
-                    postATMessage();
-                    postRapidMessage();
-                    break;
-                case 'user_logged_in':
-                    user_logged_in = message[1];
-                    postGAMessage();
-                    postATMessage();
-                    break;
-            }
-        }, false);
-
-        analytics_frame.src = "https://assets.tumblr.com/analytics.html?e545bd2397476017430227533432638a#" +
-                              "http://b1a4songsorter.tumblr.com";
-        function postGAMessage() {
-            if (analytics_iframe_loaded && user_logged_in) {
-                var is_ajax = false;
-                analytics_frame.contentWindow.postMessage(['tick_google_analytics', is_ajax, user_logged_in, blog_is_nsfw, '/?route=%2F'].join(';'), analytics_frame.src.split('/analytics.html')[0]);
-            }
-        }
-        function postCSMessage() {
-            COMSCORE = true;
-            analytics_frame.contentWindow.postMessage('enable_comscore;' + window.location, analytics_frame.src.split('/analytics.html')[0]);
-        }
-        function postATMessage() {
-            if (addthis_enabled && analytics_iframe_loaded) {
-                analytics_frame.contentWindow.postMessage('enable_addthis', analytics_frame.src.split('/analytics.html')[0]);
-            }
-        }
-        function postRapidMessage() {
-                            if (analytics_iframe_loaded) {
-                    var is_ajax = '';
-                    var route = '/';
-                    var tumblelog_id = '198116912';
-                    var yahoo_space_id = '1197719229';
-                    var rapid_client_only = '1';
-                    var apv = '1';
-                    var rapid_ex = '';
-
-                    analytics_frame.contentWindow.postMessage(
-                        [
-                            'tick_rapid', is_ajax, route, user_logged_in, tumblelog_id,
-                            yahoo_space_id, rapid_client_only, apv, rapid_ex
-                        ].join(';'),
-                        analytics_frame.src.split('/analytics.html')[0]
-                    );
-                }
-                    }
-    })();
-</script><script type="text/javascript">!function(s){s.src='https://px.srvcs.tumblr.com/impixu?T=1505381410&J=eyJ0eXBlIjoidXJsIiwidXJsIjoiaHR0cDpcL1wvc2hpbnlzd2FpZnVzb3J0ZXIudHVtYmxyLmNvbVwvIiwicmVxdHlwZSI6MCwicm91dGUiOiJcLyJ9&U=OAMMMABBGK&K=d2ec4e88ff130468f72e3047daa5f3bf0ff01c0bed9cd2b7e642046b15ab66a2&R='.replace(/&R=[^&$]*/,'').concat('&R='+escape(document.referrer)).slice(0,2000).replace(/%.?.?$/,'');}(new Image());</script><noscript><img style="position:absolute;z-index:-3334;top:0px;left:0px;visibility:hidden;" src="https://px.srvcs.tumblr.com/impixu?T=1505381410&J=eyJ0eXBlIjoidXJsIiwidXJsIjoiaHR0cDpcL1wvc2hpbnlzd2FpZnVzb3J0ZXIudHVtYmxyLmNvbVwvIiwicmVxdHlwZSI6MCwicm91dGUiOiJcLyIsIm5vc2NyaXB0IjoxfQ==&U=OAMMMABBGK&K=b44c28fe059ebc5c1d6e6fc5fe9a5cc6a22db536b966ed3bfb42ae72fd49e3b2&R="></noscript><script >
-        (function (w,d) {
-            'use strict';
-            var l = function(el, type, listener, useCapture) {
-                el.addEventListener ?
-                el.addEventListener(type, listener, !!useCapture) :
-                el.attachEvent && el.attachEvent('on' + type, listener, !!useCapture);
-            };
-            var a = function () {
-                                if (d.getElementById('tumblr-cdx')) {
-                    return;
-                }
-                var s = d.createElement('script');
-                var el = d.getElementsByTagName('script')[0];
-                s.async = true;
-                s.src = 'http://assets.tumblr.com/assets/scripts/vendor/cedexis/1-13960-radar10.min.js?_v=3bdba6b6385049a2436d3097f1eceef1';
-                s.type = 'text/javascript';
-                s.id = 'tumblr-cdx';
-                d.body.appendChild(s);
-            };
-            l(w,'load',a);
-        }(window, document));
-</script><noscript id="bootloader" data-bootstrap="{&quot;Components&quot;:{&quot;PostActivity&quot;:[],&quot;NotificationPoller&quot;:{&quot;messaging_keys&quot;:[],&quot;token&quot;:&quot;c86f8a500596474a7ef5034081f694bd&quot;,&quot;inbox_unread&quot;:0},&quot;TumblelogIframe&quot;:{&quot;unified&quot;:true,&quot;variant&quot;:null,&quot;isCompact&quot;:true,&quot;tumblelogBundleSrc&quot;:&quot;http:\/\/assets.tumblr.com\/client\/prod\/standalone\/tumblelog\/index.build.js?_v=0c6f8601c96adde8318cac8af516222d&quot;,&quot;tumblelogName&quot;:&quot;b1a4songsorter&quot;,&quot;isLoggedIn&quot;:false,&quot;isFriend&quot;:false,&quot;formKey&quot;:&quot;&quot;,&quot;canSubscribe&quot;:false,&quot;isSubscribed&quot;:false,&quot;tumblelogTitle&quot;:&quot;B1A4 Song Sorter&quot;,&quot;tumblelogAvatar&quot;:&quot;http:\/\/assets.tumblr.com\/images\/default_avatar\/octahedron_closed_40.png&quot;,&quot;tumblelogHost&quot;:&quot;http:\/\/b1a4songsorter.tumblr.com&quot;,&quot;isOptica&quot;:false,&quot;isCustomTheme&quot;:true,&quot;themeHeaderImage&quot;:&quot;https:\/\/assets.tumblr.com\/images\/default_header\/optica_pattern_01.png?_v=f67ca5ac5d1c4a0526964674cb5a0605&quot;,&quot;themeBackgroundColor&quot;:&quot;#FAFAFA&quot;,&quot;themeTitleColor&quot;:&quot;#444444&quot;,&quot;themeAccentColor&quot;:&quot;#529ECC&quot;,&quot;brag&quot;:true,&quot;adsEnabled&quot;:true,&quot;canShowAd&quot;:true,&quot;isPremium&quot;:false,&quot;showLrecAds&quot;:false,&quot;showStickyLrecBackfill&quot;:false,&quot;showGeminiAds&quot;:false,&quot;geminiSectionCodeDesktop&quot;:&quot;a10bca9c-0c5d-4a02-ab13-14ab8513d81d&quot;,&quot;geminiSectionCodeMobile&quot;:&quot;ced63809-b609-4aca-96a0-abc099acba6b&quot;,&quot;currentPageType&quot;:&quot;blog&quot;,&quot;currentPage&quot;:&quot;1&quot;,&quot;searchQuery&quot;:&quot;&quot;,&quot;tag&quot;:&quot;&quot;,&quot;query&quot;:&quot;&quot;,&quot;chrono&quot;:false,&quot;postId&quot;:&quot;&quot;,&quot;src&quot;:&quot;http:\/\/b1a4songsorter.tumblr.com\/&quot;,&quot;postUrl&quot;:&quot;&quot;,&quot;isBlocked&quot;:null,&quot;isAdmin&quot;:false,&quot;lookupButtonUrl&quot;:&quot;&quot;,&quot;showSpamButton&quot;:false,&quot;showRootPostButton&quot;:false,&quot;rootPostUrl&quot;:&quot;&quot;,&quot;showRadarPostButton&quot;:false,&quot;radarKeys&quot;:&quot;&quot;,&quot;isUniblocked&quot;:false,&quot;isNsfw&quot;:false,&quot;isAdult&quot;:false,&quot;isSpam&quot;:false,&quot;isPrimaryBlog&quot;:false,&quot;canEdit&quot;:false,&quot;canReblogSelf&quot;:false,&quot;showLikeButton&quot;:false,&quot;showReblogButton&quot;:false,&quot;reblogUrl&quot;:&quot;&quot;,&quot;showFanMailButton&quot;:false,&quot;showMessagingButton&quot;:false,&quot;loginCheckIframeSrc&quot;:&quot;http:\/\/assets.tumblr.com\/assets\/html\/iframe\/login_check.html?_v=d92d24a70075d882e6cfd5c8303fbf32&quot;,&quot;appInstallUrls&quot;:{&quot;android&quot;:&quot;https:\/\/play.google.com\/store\/apps\/details?id=com.tumblr\u0026referrer=utm_source%3Dtumblr%26utm_medium%3Diframe%26utm_campaign%3Dblog_network_floating_cta&quot;,&quot;ios&quot;:&quot;https:\/\/itunes.apple.com\/app\/apple-store\/id305343404?pt=9029\u0026ct=blog_network_floating_cta\u0026mt=8&quot;},&quot;appOpenReferrer&quot;:&quot;tumblr_new_iframe&quot;,&quot;isShowSearch&quot;:true,&quot;supplyLogging&quot;:[],&quot;secondsSinceLastActivity&quot;:-1}},&quot;Flags&quot;:{&quot;doods&quot;:&quot;eyJmaWx0ZXJfbnNmdyI6dHJ1ZSwic2FmZV9tb2RlIjp0cnVlLCJzYWZlX21vZGVfZW5hYmxlZCI6dHJ1ZSwia2V5Y29tbWFuZF9hdXRvX3BhZ2luYXRlIjp0cnVlLCJsb2dnZWRfb3V0X3NlYXJjaCI6dHJ1ZSwia3Jha2VuX3dlYl9sb2dnaW5nX2xpYnJhcnkiOnRydWUsInNlY3VyZV9mb3JtX2tleSI6dHJ1ZSwic2VjdXJlX2Zvcm1fa2V5X2Z1bGx5X29uIjp0cnVlLCJ0dW1ibGVsb2dfcG9wb3ZlciI6dHJ1ZSwiY2Fub25pY2FsX3VybF93cml0ZXMiOnRydWUsImVuYWJsZV9jYXB0dXJlX2pzIjp0cnVlLCJwcmltYV9wb3N0X2Zvcm1zIjp0cnVlLCJsb2NrZWRfcmVibG9nX3VpIjp0cnVlLCJ0YWJsZXRfYmFubmVyX2FjdGl2ZSI6dHJ1ZSwibW9iaWxlX2Jhbm5lcl9hY3RpdmUiOnRydWUsImxvZ19zZWFyY2hfYm94Ijp0cnVlLCJ1c2VyX21lbnRpb25zIjp0cnVlLCJodG1sNV9hdWRpb19wbGF5ZXIiOnRydWUsInBvcG92ZXJfcmVjb21tZW5kYXRpb25zIjp0cnVlLCJpbmRhc2hfcmVjb21tZW5kYXRpb25zIjp0cnVlLCJwb3B0aWNhX3R1bWJsZWxvZ19wb3BvdmVycyI6dHJ1ZSwidHVtYmxyX3R2Ijp0cnVlLCJkZXByZWNhdGVfZmVhdHVyZWRfdGFncyI6dHJ1ZSwicmVibG9nX3VpX3JlZnJlc2giOnRydWUsInRhYl9zd2l0Y2hlciI6dHJ1ZSwiZmFzdF9jb21wb3NlIjp0cnVlLCJkYXNoYm9hcmRfcmVmcmVzaCI6dHJ1ZSwibW9iaWxlX3dlYl9waG90b3NldHMiOnRydWUsIm1vYmlsZV93ZWJfZ2F0ZSI6dHJ1ZSwibW9iaWxlX3dlYl9wYWdlX3RpdGxlcyI6dHJ1ZSwibW9iaWxlX3dlYl9hYnVzZV9mb3JtIjp0cnVlLCJkb250X2Nhc3RfanNfZm9sbG93cyI6dHJ1ZSwiYWRzX25ld192ZW5kb3JfYnV0dG9ucyI6dHJ1ZSwicmVhY3RpdmF0aW9uX2Zsb3ciOnRydWUsImd1bHBqc19hZG1pbiI6dHJ1ZSwiZW5hYmxlX2pzX2VwaGVtZXJhbF9sb2ciOnRydWUsImxvZ19sYWR5Ijp0cnVlLCJjc2xvZ2dlcl9qcyI6dHJ1ZSwiZGlzY292ZXJ5X2h1Yl9hY2Nlc3MiOnRydWUsImhlYWRlcl9hY2NvdW50X21lbnUiOnRydWUsImVuYWJsZV9zaGFyZV9lbWJlZF9jb2RlIjp0cnVlLCJyZWRkaXRfc2hhcmluZyI6dHJ1ZSwicG9zdF9pdF9mb3J3YXJkIjp0cnVlLCJwZWVwcl9zZWFyY2hfYW5kX2ZpbHRlciI6dHJ1ZSwiaW50ZXJuc19wYWdlIjp0cnVlLCJmb2xsb3dlZF9zZWFyY2hlc19iaWdfd2ViIjp0cnVlLCJsaXZlcGhvdG9zX3dlYiI6dHJ1ZSwic2FmZV9tb2RlX293bl9wb3N0Ijp0cnVlLCJoaWRlX2RlZmF1bHRfaGVhZGVyc19ibG9nX2NhcmRzIjp0cnVlLCJhcmNoaXZlLXBsdXMiOnRydWUsImRhcmxhX2FkX2ZlZWRiYWNrIjp0cnVlLCJzdGF0dXNfaW5kaWNhdG9yc191aSI6dHJ1ZSwiZGlzYWJsZV95YWhvb19iX2Nvb2tpZSI6dHJ1ZSwibGl2ZXBob3RvcyI6dHJ1ZX0=&quot;},&quot;Context&quot;:{&quot;name&quot;:&quot;default&quot;,&quot;time&quot;:1505381410000,&quot;userinfo&quot;:{&quot;primary&quot;:&quot;&quot;,&quot;name&quot;:&quot;&quot;,&quot;channels&quot;:[]},&quot;hosts&quot;:{&quot;assets_host&quot;:&quot;http:\/\/assets.tumblr.com&quot;,&quot;secure_assets_host&quot;:&quot;https:\/\/assets.tumblr.com&quot;,&quot;www_host&quot;:&quot;http:\/\/www.tumblr.com&quot;,&quot;secure_www_host&quot;:&quot;https:\/\/www.tumblr.com&quot;,&quot;embed_host&quot;:&quot;https:\/\/embed.tumblr.com&quot;,&quot;safe_host&quot;:&quot;http:\/\/safe.txmblr.com&quot;,&quot;platform_host&quot;:&quot;http:\/\/platform.tumblr.com&quot;},&quot;language&quot;:&quot;en_US&quot;,&quot;language_simple&quot;:&quot;en&quot;,&quot;assets&quot;:&quot;http:\/\/assets.tumblr.com\/client\/prod\/&quot;},&quot;Translations&quot;:{&quot;%1$sReport %2$s&#039;s post?%3$sIf it violates our community guidelines, we&#039;ll remove it.%4$s&quot;:&quot;%1$sReport %2$s&#039;s reblog?%3$sIf it violates our community guidelines, we&#039;ll remove it.%4$s&quot;,&quot;%1$sReport %2$s&#039;s reply?%3$sIf it violates our community guidelines, we&#039;ll remove it.%4$s&quot;:&quot;%1$sReport %2$s&#039;s reblog?%3$sIf it violates our community guidelines, we&#039;ll remove it.%4$s&quot;}}"></noscript><script src="http://assets.tumblr.com/client/prod/standalone/tumblelog/index.build.js?_v=0c6f8601c96adde8318cac8af516222d"></script></body>
+</body>
 </html>
