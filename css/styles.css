@@ -1,70 +1,141 @@
-/*@media (min-width: 1450px) {
-  .container {
-    width: 1200px;
-  }
-  .container-fluid {
-    width: 1350px;
-  }
-}*/
-
-.container-fluid {
-    margin-left: 7%;
-}
-
-a {
-    text-decoration: none;
-}
-    
-.tocnumber {
-    color: black;
-    margin-right: 5px;
-}
-
-table {
-    border-collapse: collapse;
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
-    
-th, td {
-    border: 1px solid gray;
-    background-color: whitesmoke;
-    font-family: Arial;
+#mainTable {
     font-size: 14px;
-    padding: 2px 5px;
-}
-
-th {
+    font-family: 'Arial', sans-serif;
     text-align: center;
-    background-color: lightgray;
-}
-
-.table-yes {
-    background: #9F9;
     vertical-align: middle;
-    text-align: center;
-}
-
-.table-no {
-    background: #F99;
-    vertical-align :middle;
-    text-align: center;
-}
-
-.table-na {
-    background: #ececec; 
-    color: #2C2C2C; 
-    vertical-align: middle; 
-    font-size: 12px; 
-    text-align: center;
-}
-
-.table-note {
-    text-align: center; 
-    font-size: 8pt;"
-}
-
-.album {
-    font-style: italic;
-    text-align: center;
-}
+    width: 410px;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: separate;
+    border-spacing: 10px 5px;
+    
+ }
+ 
+ .tb_header {
+     padding-bottom: 10px;
+     font-family: Arial, Helvetica, sans-serif;
+ }
+ 
+ #fldLeft    {
+     height: 180px;
+     text-align: center; 
+     min-width: 120px;
+     border: 1px solid #000;
+     cursor:pointer;
+     padding:10px;
+     font-family: Arial, Helvetica, sans-serif;
+ }
+ #fldRight   {
+     height: 180px;
+     text-align: center;
+     padding:10px;
+     min-width: 120px;
+     border: 1px solid #000;
+     cursor:pointer;
+     font-family: Arial, Helvetica, sans-serif;
+ }
+ #fldMiddleT {
+     text-align: center;
+     min-width: 150px;
+     height: 90px;
+     border: 1px solid #000;
+     cursor:pointer;
+     font-family: Arial, Helvetica, sans-serif;
+ }
+ #fldMiddleB {
+     text-align: center;
+     width: 150px;
+     height: 50px;
+     padding:0px;
+     border: 1px solid #000;
+     cursor:pointer;
+     font-family: Arial, Helvetica, sans-serif;
+ }
+ 
+ .cbox {
+     cursor:pointer;
+     font-family: Arial, Helvetica, sans-serif;
+     font-size: 9px;
+ }
+ 
+ #resTable {
+     width:200px;
+     font-size:12px;
+     height:180px;
+     line-height:100%;
+     margin-left:auto;
+     margin-right:auto;
+     border:1px solid #000;
+     border-collapse:collapse;
+     text-align: center;
+     font-family: Arial, Helvetica, sans-serif;
+ }
+ 
+ .resTableH {
+     color:#ffffff;
+     background-color:#000000;
+     text-align:center;
+     font-family: Arial, Helvetica, sans-serif;
+ }
+ .resTableL {
+     color:#000000;
+     border:1px solid #000000;
+     text-align:right;
+     padding-right:5px;
+     font-family: Arial, Helvetica, sans-serif;
+ }
+ .resTableR {
+     color:#000000;
+     border:1px solid #000000;
+     padding-left:5px;
+     font-family: Arial, Helvetica, sans-serif;
+ }
+ 
+ a       {
+     text-decoration:none;
+     font-size:15px;
+     font-family: Arial, Helvetica, sans-serif;
+ }
+ a:hover {
+     color:#99ccff;
+     font-size:15px;
+     font-family: Arial, Helvetica, sans-serif;
+ }
+ <!--
+ .style4 {
+     font-family: Arial, Helvetica, sans-serif;
+     color: #000000;
+     font-weight: normal;
+     font-size:15px;
+ }
+ a:link {
+     color: #990000;
+     font-size:15px;
+     text-decoration: none;
+     font-family: Arial, Helvetica, sans-serif;
+     font-size:15px;
+ }
+ a {
+     font-family: Arial, Helvetica, sans-serif;
+     ;font-size:15px;
+ }
+ a:visited {
+     text-decoration: none;
+     color: #6600FF;font-size:15px;
+     font-size: 11px;
+     font-family: Arial, Helvetica, sans-serif;
+ }
+ a:hover {
+     text-decoration: none;
+     color: #FF6600;
+     font-size:15px;
+     font-family: Arial, Helvetica, sans-serif;
+ }
+ a:active {
+     text-decoration: none;
+     font-size:15px;
+     font-family: Arial, Helvetica, sans-serif;
+ }
+ body {
+ background-color:#ffffff;}
+ -->
